@@ -5,13 +5,13 @@ NotesTable:
     AttributeDefinitions:
       - AttributeName: listId
         AttributeType: S
-      # - AttributeName: noteId
-      #   AttributeType: S
+      - AttributeName: itemId
+        AttributeType: N
     KeySchema:
       - AttributeName: listId
         KeyType: HASH
-      #- AttributeName: noteId
-      #  KeyType: RANGE
+      - AttributeName: itemId
+        KeyType: RANGE
     ProvisionedThroughput:
       ReadCapacityUnits: ${self:custom.tableReadThroughput}
       WriteCapacityUnits: ${self:custom.tableWriteThroughput}
