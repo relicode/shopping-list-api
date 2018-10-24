@@ -1,7 +1,7 @@
 {
-  "name": "serverless-typescript-boilerplate",
+  "name": "shopping-list-api",
   "version": "0.0.1",
-  "description": "Serverless + TypeScript project boilerplate",
+  "description": "API for Serverless + TypeScript shopping app",
   "main": "",
   "scripts": {
     "test": "jest"
