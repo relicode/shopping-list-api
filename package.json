@@ -1,7 +1,7 @@
 {
   "name": "shopping-list-api",
   "version": "0.0.1",
-  "description": "API for Serverless + TypeScript shopping app",
+  "description": "API for Serverless + TypeScript shopping list app",
   "main": "",
   "scripts": {
     "test": "jest"

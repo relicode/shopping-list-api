@@ -23,18 +23,18 @@ const item3Props: ShoppingListItemProperties = {
   name: MINIMAL,
 }
 
-test('A ShoppingList gets instanciated without parameters.', () => {
+test('ShoppingList gets instanciated without parameters.', () => {
   const list: ShoppingList = new ShoppingList(ANSSIS_LIST)
   expect(list.listId).toEqual(ANSSIS_LIST)
 })
 
-test('A ShoppingList gets instanciated without items and a new ShoppingListItem can be added.', () => {
+test('ShoppingList gets instanciated without items and a new ShoppingListItem can be added.', () => {
   const list: ShoppingList = new ShoppingList(ANSSIS_LIST)
   list.addItem(item1Props)
   expect(list.items[0].name).toMatch(new RegExp(APPLE))
 })
 
-test('A ShoppingList gets instanciated with items.', () => {
+test('ShoppingList gets instanciated with items.', () => {
   const listItems = [
     new ShoppingListItem(item1Props),
     new ShoppingListItem(item2Props),
