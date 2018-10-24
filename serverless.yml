@@ -1,0 +1,27 @@
+service: serverless-typescript-boilerplate
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-west-1
+  memorySize: 256
+
+package:
+  exclude:
+    - node_modules/**/*
+
+plugins:
+  - serverless-webpack
+
+custom:
+  shoppingListTableName: shopping-list-${self:provider.stage}
+  tableReadThroughput: 5
+  tableWriteThroughput: 1
+
+functions: ${file(./config/functions.yml):functions}
+resources:
+  Resources:
+    ${file(./config/dynamodb.yml)}
+
+iamRoleStatements: ${file(./config/iamrolestatements.yml):iamRoleStatements}
+

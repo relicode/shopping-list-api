@@ -1,0 +1,16 @@
+functions:
+
+  echo:
+    handler: typescript/functions/echo.echo
+    events:
+      - http:
+          method: post
+          path: echo
+
+  async-and-uncertain-echo:
+    handler: typescript/functions/async-and-uncertain-echo.asyncAndUncertainEcho
+    events:
+      - http:
+          method: post
+          path: async-and-uncertain-echo
+

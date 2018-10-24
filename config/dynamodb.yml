@@ -1,0 +1,18 @@
+NotesTable:
+  Type: AWS::DynamoDB::Table
+  Properties:
+    TableName: ${self:custom.shoppingListTableName}
+    AttributeDefinitions:
+      - AttributeName: listId
+        AttributeType: S
+      # - AttributeName: noteId
+      #   AttributeType: S
+    KeySchema:
+      - AttributeName: listId
+        KeyType: HASH
+      #- AttributeName: noteId
+      #  KeyType: RANGE
+    ProvisionedThroughput:
+      ReadCapacityUnits: ${self:custom.tableReadThroughput}
+      WriteCapacityUnits: ${self:custom.tableWriteThroughput}
+
