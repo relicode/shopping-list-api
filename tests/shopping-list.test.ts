@@ -36,9 +36,9 @@ test('A ShoppingList gets instanciated without items and a new ShoppingListItem 
 
 test('A ShoppingList gets instanciated with items.', () => {
   const list: ShoppingList = new ShoppingList(ANSSIS_LIST, [
-    new ShoppingListItem(1, item1Props),
-    new ShoppingListItem(2, item2Props),
-    new ShoppingListItem(3, item3Props),
+    new ShoppingListItem(item1Props),
+    new ShoppingListItem(item2Props),
+    new ShoppingListItem(item3Props),
   ])
   expect(list.items[0].name).toMatch(new RegExp(APPLE))
   expect(list.items[1].quantity).toBe(3)
