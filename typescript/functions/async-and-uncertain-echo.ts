@@ -1,4 +1,4 @@
-import { Handler, Context, Callback } from 'aws-lambda'
+import { Handler } from 'aws-lambda'
 
 import { Request, Response } from '../utils/lambda-proxy'
 
@@ -12,13 +12,12 @@ const getRandomPromise = (body: object) => (
   })
 )
 
-export const asyncAndUncertainEcho: Handler = async (event: any, context: Context, cb: Callback): Promise<Response> => {
+export const asyncAndUncertainEcho: Handler = async (event: any): Promise<Response> => {
   try {
     const request = new Request(event)
     const data = await getRandomPromise(request.getBody())
     return new Response(data)
-  }
-  catch (err) {
+  } catch (err) {
     return new Response({ ...err, statusCode: 400 })
   }
 }
