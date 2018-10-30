@@ -1,6 +1,7 @@
 ---
 extends: "tslint:recommended"
 rules:
+    max-classes-per-file: false
     max-line-length:
         options: [120]
     new-parens: true
@@ -17,10 +18,8 @@ rules:
             - time
             - timeEnd
             - trace
-    quotemark:
-      - true
-      - "single"
-      - "jsx-double"
+    object-literal-sort-keys: false
+    quotemark: [true, "single", "jsx-double"]
     semicolon: [true, "never"]
 
 jsRules:

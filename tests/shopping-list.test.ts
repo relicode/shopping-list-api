@@ -1,4 +1,4 @@
-import ShoppingList, { ShoppingListItem, ShoppingListItemProperties } from '../typescript/utils/shopping-list'
+import ShoppingList, { IShoppingListItemProperties, ShoppingListItem } from '../typescript/utils/shopping-list'
 
 
 const APPLE = 'An apple'
@@ -7,19 +7,19 @@ const MINIMAL = 'Minimal items'
 const BUNCHES = 'bunches'
 const ANSSIS_LIST = `Anssi's list`
 
-const item1Props: ShoppingListItemProperties = {
+const item1Props: IShoppingListItemProperties = {
   name: APPLE,
   purchased: false,
-  quantity: 1,  
+  quantity: 1,
 }
 
-const item2Props: ShoppingListItemProperties = {
+const item2Props: IShoppingListItemProperties = {
   name: TWIGS,
   quantity: 3,
   unit: BUNCHES,
 }
 
-const item3Props: ShoppingListItemProperties = {
+const item3Props: IShoppingListItemProperties = {
   name: MINIMAL,
 }
 
