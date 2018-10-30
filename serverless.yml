@@ -6,6 +6,11 @@ provider:
   region: eu-west-1
   memorySize: 256
 
+  environment:
+    TABLE_NAME: ${self:custom.shoppingListTableName}
+
+  iamRoleStatements: ${file(./config/iamrolestatements.yml):iamRoleStatements}
+
 package:
   exclude:
     - node_modules/**/*
@@ -23,5 +28,4 @@ resources:
   Resources:
     ${file(./config/dynamodb.yml)}
 
-iamRoleStatements: ${file(./config/iamrolestatements.yml):iamRoleStatements}
 

@@ -14,3 +14,10 @@ functions:
           method: post
           path: async-and-uncertain-echo
 
+  shopping-list-put:
+    handler: typescript/functions/shopping-list-put.handler
+    events:
+      - http:
+          method: post
+          path: shopping-list-put
+

@@ -1,4 +1,4 @@
-NotesTable:
+ShoppingListTable:
   Type: AWS::DynamoDB::Table
   Properties:
     TableName: ${self:custom.shoppingListTableName}
@@ -6,7 +6,7 @@ NotesTable:
       - AttributeName: listId
         AttributeType: S
       - AttributeName: itemId
-        AttributeType: N
+        AttributeType: S
     KeySchema:
       - AttributeName: listId
         KeyType: HASH

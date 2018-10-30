@@ -9,4 +9,4 @@ iamRoleStatements:
       - dynamodb:UpdateItem
       - dynamodb:DeleteItem
     Resource:
-      - "Fn::GetAtt": [ ${self:custom.shoppingListTableName}, Arn ]
+      - { "Fn::GetAtt": ["ShoppingListTable", "Arn" ] }
