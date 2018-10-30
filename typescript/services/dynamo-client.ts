@@ -1,6 +1,6 @@
 import * as AWS from 'aws-sdk'
 
-import Logger from '../utils/logger'
+import Logger from '@utils/logger'
 
 
 const { DynamoDB } = AWS

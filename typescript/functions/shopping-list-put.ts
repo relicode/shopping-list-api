@@ -1,7 +1,7 @@
 import { Handler } from 'aws-lambda'
 
-import DynamoClient from '../services/dynamo-client'
-import { Request, Response } from '../utils/lambda-proxy'
+import DynamoClient from '@services/dynamo-client'
+import { Request, Response } from '@utils/lambda-proxy'
 
 
 const dbClient = new DynamoClient(process.env.TABLE_NAME)

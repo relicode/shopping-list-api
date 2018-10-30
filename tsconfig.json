@@ -9,6 +9,11 @@
       "es2015",
       "es2017",
       "esnext.asynciterable"
-    ]
+    ],
+    "baseUrl": "typescript",
+    "paths": {
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"]
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { Callback, Context, Handler } from 'aws-lambda'
 
-import { Request, Response } from '../utils/lambda-proxy'
+import { Request, Response } from '@utils/lambda-proxy'
 
 
 export const echo: Handler = (event: any, context: Context, cb: Callback): void => { // tslint:disable-line

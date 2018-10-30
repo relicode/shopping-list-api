@@ -1,6 +1,6 @@
 import { Handler } from 'aws-lambda'
 
-import { Request, Response } from '../utils/lambda-proxy'
+import { Request, Response } from '@utils/lambda-proxy'
 
 
 const getRandomPromise = (body: object) => (

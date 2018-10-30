@@ -4,6 +4,7 @@
   "description": "API for Serverless + TypeScript shopping list app",
   "main": "",
   "scripts": {
+    "build": "sls webpack",
     "lint": "tslint -c tslint.yaml 'typescript/**/*.ts'",
     "test": "jest"
   },
