@@ -1,7 +1,10 @@
 import * as AWS from 'aws-sdk'
 
+import Logger from '../utils/logger'
+
 
 const { DynamoDB } = AWS
+const logger = new Logger('services/dynamo-client')
 
 export default class DynamoClient {
   private readonly docClient: AWS.DynamoDB.DocumentClient = new DynamoDB.DocumentClient()
@@ -20,7 +23,7 @@ export default class DynamoClient {
     try {
       return await this.docClient[actionType](params).promise()
     } catch (e) {
-      console.log('Error at dynamo-client.ts: ' + e.message) // tslint:disable-line
+      logger.error('Error at dynamo-client.ts: ' + e)
       throw e
     }
   }
