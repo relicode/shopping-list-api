@@ -1,6 +1,8 @@
 import * as Joi from 'joi'
 import { v1 as uuidv1 } from 'uuid'
 
+import { validateSchema } from '@utils/validators'
+
 
 const ITEM_ITEM_ID = 'itemId'
 const ITEM_PURCHASED = 'purchased'
@@ -34,15 +36,6 @@ interface IShoppingList {
   items: IListItem[],
 }
 
-const validate = (item: object, schema: Joi.Schema) => {
-  const result = Joi.validate(item, schema, { abortEarly: false })
-  if (result.error !== null) {
-    const errorMessage = result.error.details.map((d) => d.message).join('\n')
-    throw new Error(errorMessage)
-  }
-  return item
-}
-
 const listItemSchema = Joi.object().keys({
   [ITEM_ITEM_ID]: Joi.string().required(),
   name: Joi.string().required(),
@@ -58,7 +51,7 @@ export const listItemFactory = (params: IListItemFactoryParams): IListItem => {
   itemData[ITEM_QUANTITY] = params.hasOwnProperty(ITEM_QUANTITY) ? params[ITEM_QUANTITY] : 1
   itemData[ITEM_UNIT] = params.hasOwnProperty(ITEM_UNIT) ? params[ITEM_UNIT] : undefined
 
-  validate(itemData, listItemSchema)
+  validateSchema(itemData, listItemSchema)
   return itemData as IListItem
 }
 
@@ -70,6 +63,6 @@ const shoppingListSchema = Joi.object().keys({
 export const shoppingListFactory = (params: IShoppingListFactoryParams): IShoppingList => {
   const listData = { listId: params.listId }
   listData[LIST_ITEMS] = params.hasOwnProperty(LIST_ITEMS) ? params[LIST_ITEMS] : []
-  validate(listData, shoppingListSchema)
+  validateSchema(listData, shoppingListSchema)
   return params as IShoppingList
 }
