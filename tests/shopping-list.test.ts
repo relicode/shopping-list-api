@@ -1,47 +1,34 @@
-/*
-import { shoppingListFactory, shoppingListItemFactory } from '@utils/shopping-list'
+import { /* shoppingListFactory, */ shoppingListItemFactory } from '../src/utils/shopping-list'
 
 
-const APPLE = 'An apple'
+// const APPLE = 'An apple'
 const TWIGS = 'A bunch of twigs'
-const MINIMAL = 'Minimal items'
+// const MINIMAL = 'Minimal items'
 const BUNCHES = 'bunches'
-const ANSSIS_LIST = `Anssi's list`
+// const ANSSIS_LIST = `Anssi's list`
 
-const item1Props: IShoppingListItemProperties = {
-  name: APPLE,
-  purchased: false,
-  quantity: 1,
-}
-
-const item2Props: IShoppingListItemProperties = {
+const itemWithAllProps = {
+  itemId: 'aae7e080-dd08-11e8-b761-e71312b67519',
   name: TWIGS,
+  purchased: true,
   quantity: 3,
   unit: BUNCHES,
 }
 
-const item3Props: IShoppingListItemProperties = {
-  name: MINIMAL,
+const itemWithMinimalProps = {
+  name: TWIGS,
 }
 
-test('ShoppingList gets instanciated without parameters.', () => {
-  const list: ShoppingList = new ShoppingList(ANSSIS_LIST)
-  expect(list.listId).toEqual(ANSSIS_LIST)
+test('A valid ShoppingListItem with id is factured.', () => {
+  const item = shoppingListItemFactory(itemWithAllProps)
+  expect(item).toEqual(itemWithAllProps)
 })
 
-test('ShoppingList gets instanciated without items and a new ShoppingListItem can be added.', () => {
-  const list: ShoppingList = new ShoppingList(ANSSIS_LIST)
-  list.addItem(item1Props)
-  expect(list.items[0].name).toMatch(new RegExp(APPLE))
+test('A valid ShoppingListItem with minimal props (only a name) is factured.', () => {
+  const item = shoppingListItemFactory(itemWithMinimalProps)
+  expect(item.itemId).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i)
+  expect(item.name).toBe(TWIGS)
+  expect(item.purchased).toBe(false)
+  expect(item.quantity).toBe(1)
+  expect(item.unit).toBe(undefined)
 })
-
-test('ShoppingList gets instanciated with items.', () => {
-  const listItems = [
-    new ShoppingListItem(item1Props),
-    new ShoppingListItem(item2Props),
-    new ShoppingListItem(item3Props),
-  ]
-  const list: ShoppingList = new ShoppingList(ANSSIS_LIST, listItems)
-  expect(list.items).toEqual([...listItems])
-})
-*/
