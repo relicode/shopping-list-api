@@ -3,7 +3,7 @@ import {
   IShoppingListFactoryParams,
   listItemFactory,
   shoppingListFactory,
-} from '../src/utils/shopping-list'
+} from '@utils/shopping-list'
 
 
 const BUNCHES = 'bunches'
