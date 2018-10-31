@@ -1,4 +1,5 @@
-import ShoppingList, { IShoppingListItemProperties, ShoppingListItem } from '../typescript/utils/shopping-list'
+/*
+import { shoppingListFactory, shoppingListItemFactory } from '@utils/shopping-list'
 
 
 const APPLE = 'An apple'
@@ -43,3 +44,4 @@ test('ShoppingList gets instanciated with items.', () => {
   const list: ShoppingList = new ShoppingList(ANSSIS_LIST, listItems)
   expect(list.items).toEqual([...listItems])
 })
+*/

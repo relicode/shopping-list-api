@@ -9,7 +9,7 @@ provider:
   environment:
     TABLE_NAME: ${self:custom.shoppingListTableName}
 
-  iamRoleStatements: ${file(./config/iamrolestatements.yml):iamRoleStatements}
+  iamRoleStatements: ${file(./cloudformation-templates/iamrolestatements.yml):iamRoleStatements}
 
 package:
   exclude:
@@ -23,9 +23,9 @@ custom:
   tableReadThroughput: 5
   tableWriteThroughput: 1
 
-functions: ${file(./config/functions.yml):functions}
+functions: ${file(./cloudformation-templates/functions.yml):functions}
 resources:
   Resources:
-    ${file(./config/dynamodb.yml)}
+    ${file(./cloudformation-templates/dynamodb.yml)}
 
 

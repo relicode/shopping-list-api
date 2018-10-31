@@ -1,0 +1,9 @@
+functions:
+
+  shopping-list-put:
+    handler: src/functions/echo.echo
+    events:
+      - http:
+          method: post
+          path: shopping-list
+

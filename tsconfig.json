@@ -3,16 +3,11 @@
     "noUnusedLocals": true,
     "sourceMap": true,
     "lib": [
-      "es5",
-      "es6",
       "dom",
-      "es2015",
-      "es2017",
-      "esnext.asynciterable"
+      "esnext"
     ],
-    "baseUrl": "typescript",
+    "baseUrl": "src",
     "paths": {
-      "@services/*": ["services/*"],
       "@utils/*": ["utils/*"]
     }
   }

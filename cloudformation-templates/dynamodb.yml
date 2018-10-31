@@ -5,13 +5,13 @@ ShoppingListTable:
     AttributeDefinitions:
       - AttributeName: listId
         AttributeType: S
-      - AttributeName: itemId
-        AttributeType: S
+      # - AttributeName: itemId
+        # AttributeType: S
     KeySchema:
       - AttributeName: listId
         KeyType: HASH
-      - AttributeName: itemId
-        KeyType: RANGE
+      # - AttributeName: itemId
+        # KeyType: RANGE
     ProvisionedThroughput:
       ReadCapacityUnits: ${self:custom.tableReadThroughput}
       WriteCapacityUnits: ${self:custom.tableWriteThroughput}

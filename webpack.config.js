@@ -10,8 +10,7 @@ module.exports = {
   entry: slsw.lib.entries,
   resolve: {
     alias: {
-      '@services': path.resolve(__dirname, 'typescript/services/'),
-      '@utils': path.resolve(__dirname, 'typescript/utils/')
+      '@utils': path.resolve(__dirname, 'src/utils/'),
     },
     extensions: [
       '.js',

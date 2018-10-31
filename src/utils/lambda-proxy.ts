@@ -11,10 +11,10 @@ export class Request {
 }
 
 interface IResponseOptions {
-    statusCode?: number
-    headers?: object
-    body?: object
-  }
+  statusCode?: number
+  headers?: object
+  body: object
+}
 
 export class Response {
   public readonly statusCode: number
@@ -22,7 +22,7 @@ export class Response {
   public readonly body: string
 
   constructor(options?: IResponseOptions) {
-    this.body = options.body ? JSON.stringify(options.body) : JSON.stringify({})
+    this.body = JSON.stringify(options.body)
     this.statusCode = options.statusCode ? options.statusCode : 200
     this.headers = options.headers ? options.headers : {}
   }
