@@ -43,7 +43,7 @@ const validate = (item: object, schema: Joi.Schema) => {
   return item
 }
 
-const shoppingListItemSchema = Joi.object().keys({
+const listItemSchema = Joi.object().keys({
   [ITEM_ITEM_ID]: Joi.string().required(),
   name: Joi.string().required(),
   [ITEM_PURCHASED]: Joi.boolean().required(),
@@ -51,20 +51,20 @@ const shoppingListItemSchema = Joi.object().keys({
   [ITEM_UNIT]: Joi.string(),
 })
 
-export const shoppingListItemFactory = (params: IListItemFactoryParams): IListItem => {
+export const listItemFactory = (params: IListItemFactoryParams): IListItem => {
   const itemData = { name: params.name }
   itemData[ITEM_ITEM_ID] = params.hasOwnProperty(ITEM_ITEM_ID) ? params[ITEM_ITEM_ID] : uuidv1()
   itemData[ITEM_PURCHASED] = params.hasOwnProperty(ITEM_PURCHASED) ? params[ITEM_PURCHASED] : false
   itemData[ITEM_QUANTITY] = params.hasOwnProperty(ITEM_QUANTITY) ? params[ITEM_QUANTITY] : 1
   itemData[ITEM_UNIT] = params.hasOwnProperty(ITEM_UNIT) ? params[ITEM_UNIT] : undefined
 
-  validate(itemData, shoppingListItemSchema)
+  validate(itemData, listItemSchema)
   return itemData as IListItem
 }
 
 const shoppingListSchema = Joi.object().keys({
   listId: Joi.string().required(),
-  items: Joi.array().items(shoppingListItemSchema).required(),
+  items: Joi.array().items(listItemSchema).required(),
 })
 
 export const shoppingListFactory = (params: IShoppingListFactoryParams): IShoppingList => {

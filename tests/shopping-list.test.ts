@@ -1,8 +1,8 @@
 import {
   IListItemFactoryParams,
   IShoppingListFactoryParams,
+  listItemFactory,
   shoppingListFactory,
-  shoppingListItemFactory,
 } from '../src/utils/shopping-list'
 
 
@@ -23,9 +23,9 @@ const itemWithMinimalProps = {
 
 const listWithAllProps = {
   items: [
-    shoppingListItemFactory(itemWithAllProps),
-    shoppingListItemFactory(itemWithAllProps),
-    shoppingListItemFactory(itemWithAllProps),
+    listItemFactory(itemWithAllProps),
+    listItemFactory(itemWithAllProps),
+    listItemFactory(itemWithAllProps),
   ],
   listId: 'my awesome shopping list',
 }
@@ -35,12 +35,12 @@ const listWithMinimalProps = {
 }
 
 test('A valid ListItem with id is factured.', () => {
-  const item = shoppingListItemFactory(itemWithAllProps)
+  const item = listItemFactory(itemWithAllProps)
   expect(item).toEqual(itemWithAllProps)
 })
 
 test('A valid ListItem with minimal props (only a name) is factured.', () => {
-  const item = shoppingListItemFactory(itemWithMinimalProps)
+  const item = listItemFactory(itemWithMinimalProps)
   expect(item.itemId).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i)
   expect(item.name).toBe(TWIGS)
   expect(item.purchased).toBe(false)
@@ -50,7 +50,7 @@ test('A valid ListItem with minimal props (only a name) is factured.', () => {
 
 test('An invalid ListItem throws an error', () => {
   expect(() => {
-    shoppingListItemFactory({} as IListItemFactoryParams)
+    listItemFactory({} as IListItemFactoryParams)
   }).toThrowError('"name" is required')
 })
 
