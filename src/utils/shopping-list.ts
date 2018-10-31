@@ -8,7 +8,7 @@ const ITEM_QUANTITY = 'quantity'
 const ITEM_UNIT = 'unit'
 const LIST_ITEMS = 'items'
 
-interface IListItemFactoryParams {
+export interface IListItemFactoryParams {
   itemId?: string,
   name: string,
   purchased?: boolean,
@@ -24,7 +24,7 @@ interface IListItem {
   unit?: string,
 }
 
-interface IShoppingListFactoryParams {
+export interface IShoppingListFactoryParams {
   listId: string,
   items?: IListItem[],
 }
@@ -64,7 +64,7 @@ export const shoppingListItemFactory = (params: IListItemFactoryParams): IListIt
 
 const shoppingListSchema = Joi.object().keys({
   listId: Joi.string().required(),
-  items: Joi.array().items(shoppingListItemSchema),
+  items: Joi.array().items(shoppingListItemSchema).required(),
 })
 
 export const shoppingListFactory = (params: IShoppingListFactoryParams): IShoppingList => {

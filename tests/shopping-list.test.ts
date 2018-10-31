@@ -1,4 +1,9 @@
-import { shoppingListFactory, shoppingListItemFactory } from '../src/utils/shopping-list'
+import {
+  IListItemFactoryParams,
+  IShoppingListFactoryParams,
+  shoppingListFactory,
+  shoppingListItemFactory,
+} from '../src/utils/shopping-list'
 
 
 const BUNCHES = 'bunches'
@@ -43,6 +48,12 @@ test('A valid ListItem with minimal props (only a name) is factured.', () => {
   expect(item.unit).toBe(undefined)
 })
 
+test('An invalid ListItem throws an error', () => {
+  expect(() => {
+    shoppingListItemFactory({} as IListItemFactoryParams)
+  }).toThrowError('"name" is required')
+})
+
 test('A valid ShoppingList with items is factured.', () => {
   const list = shoppingListFactory(listWithAllProps)
   expect(list).toEqual(listWithAllProps)
@@ -51,4 +62,10 @@ test('A valid ShoppingList with items is factured.', () => {
 test('A valid ShoppingList with minimal props (only a id) is factured.', () => {
   const list = shoppingListFactory(listWithMinimalProps)
   expect(list.listId).toEqual(listWithMinimalProps.listId)
+})
+
+test('An invalid ShoppingList throws an error', () => {
+  expect(() => {
+    shoppingListFactory({} as IShoppingListFactoryParams)
+  }).toThrowError('"listId" is required')
 })
