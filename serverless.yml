@@ -7,7 +7,7 @@ provider:
   memorySize: 256
 
   environment:
-    TABLE_NAME: ${self:custom.shoppingListTableName}
+    SHOPPING_LIST_TABLE_NAME: ${self:custom.shoppingListTableName}
 
   iamRoleStatements: ${file(./cloudformation-templates/iamrolestatements.yml):iamRoleStatements}
 
@@ -20,12 +20,11 @@ plugins:
 
 custom:
   shoppingListTableName: shopping-list-${self:provider.stage}
-  tableReadThroughput: 5
+  tableReadThroughput: 2
   tableWriteThroughput: 1
 
 functions: ${file(./cloudformation-templates/functions.yml):functions}
 resources:
   Resources:
     ${file(./cloudformation-templates/dynamodb.yml)}
-
 

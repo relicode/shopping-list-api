@@ -10,6 +10,7 @@ module.exports = {
   entry: slsw.lib.entries,
   resolve: {
     alias: {
+      '@services': path.resolve(__dirname, 'src/services/'),
       '@utils': path.resolve(__dirname, 'src/utils/'),
     },
     extensions: [

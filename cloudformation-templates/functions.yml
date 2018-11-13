@@ -1,9 +1,9 @@
 functions:
 
-  shopping-list-put:
-    handler: src/functions/echo.echo
+  shopping-list-get:
+    handler: src/functions/shopping-list.get
     events:
       - http:
-          method: post
-          path: shopping-list
+          method: get
+          path: shopping-list/{listId}
 
