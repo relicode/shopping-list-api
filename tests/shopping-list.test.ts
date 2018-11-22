@@ -1,10 +1,9 @@
 import {
-  IListItemFactoryParams,
-  IShoppingListFactoryParams,
+  ListItemFactoryParams,
+  ShoppingListFactoryParams,
   listItemFactory,
   shoppingListFactory,
 } from '@utils/shopping-list'
-
 
 const BUNCHES = 'bunches'
 const TWIGS = 'twigs'
@@ -50,7 +49,7 @@ test('A valid ListItem with minimal props (only a name) is factured.', () => {
 
 test('An invalid ListItem throws an error', () => {
   expect(() => {
-    listItemFactory({} as IListItemFactoryParams)
+    listItemFactory({} as ListItemFactoryParams)
   }).toThrowError('"name" is required')
 })
 
@@ -66,6 +65,6 @@ test('A valid ShoppingList with minimal props (only a id) is factured.', () => {
 
 test('An invalid ShoppingList throws an error', () => {
   expect(() => {
-    shoppingListFactory({} as IShoppingListFactoryParams)
+    shoppingListFactory({} as ShoppingListFactoryParams)
   }).toThrowError('"listId" is required')
 })

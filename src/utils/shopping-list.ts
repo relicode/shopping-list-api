@@ -10,7 +10,7 @@ const ITEM_QUANTITY = 'quantity'
 const ITEM_UNIT = 'unit'
 const LIST_ITEMS = 'items'
 
-export interface IListItemFactoryParams {
+export interface ListItemFactoryParams {
   itemId?: string,
   name: string,
   purchased?: boolean,
@@ -18,7 +18,7 @@ export interface IListItemFactoryParams {
   unit?: string,
 }
 
-interface IListItem {
+interface ListItem {
   itemId: string,
   name: string,
   purchased: boolean,
@@ -26,14 +26,14 @@ interface IListItem {
   unit?: string,
 }
 
-export interface IShoppingListFactoryParams {
+export interface ShoppingListFactoryParams {
   listId: string,
-  items?: IListItem[],
+  items?: ListItem[],
 }
 
-interface IShoppingList {
+interface ShoppingList {
   listId: string,
-  items: IListItem[],
+  items: ListItem[],
 }
 
 const listItemSchema = Joi.object().keys({
@@ -44,7 +44,7 @@ const listItemSchema = Joi.object().keys({
   [ITEM_UNIT]: Joi.string(),
 })
 
-export const listItemFactory = (params: IListItemFactoryParams): IListItem => {
+export const listItemFactory = (params: ListItemFactoryParams): ListItem => {
   const itemData = { name: params.name }
   itemData[ITEM_ITEM_ID] = params.hasOwnProperty(ITEM_ITEM_ID) ? params[ITEM_ITEM_ID] : uuidv1()
   itemData[ITEM_PURCHASED] = params.hasOwnProperty(ITEM_PURCHASED) ? params[ITEM_PURCHASED] : false
@@ -52,7 +52,7 @@ export const listItemFactory = (params: IListItemFactoryParams): IListItem => {
   itemData[ITEM_UNIT] = params.hasOwnProperty(ITEM_UNIT) ? params[ITEM_UNIT] : undefined
 
   validateSchema(itemData, listItemSchema)
-  return itemData as IListItem
+  return itemData as ListItem
 }
 
 const shoppingListSchema = Joi.object().keys({
@@ -60,9 +60,9 @@ const shoppingListSchema = Joi.object().keys({
   items: Joi.array().items(listItemSchema).required(),
 })
 
-export const shoppingListFactory = (params: IShoppingListFactoryParams): IShoppingList => {
+export const shoppingListFactory = (params: ShoppingListFactoryParams): ShoppingList => {
   const listData = { listId: params.listId }
   listData[LIST_ITEMS] = params.hasOwnProperty(LIST_ITEMS) ? params[LIST_ITEMS] : []
   validateSchema(listData, shoppingListSchema)
-  return params as IShoppingList
+  return params as ShoppingList
 }
