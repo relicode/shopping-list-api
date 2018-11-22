@@ -79,8 +79,8 @@ export class Response {
  */
 export class ErrorResponse extends Response {
   constructor(err: ErrorName | Error, options?: ResponseOptions) {
-    error(err)
     const errorMessage = (err instanceof Error ? err.message : err) as ErrorName
+    error(errorMessage)
     super({
       body: (options && options.body) ? options.body : { message: mapError(errorMessage).message },
       statusCode: (options && options.statusCode) ? options.statusCode : mapError(errorMessage).statusCode,

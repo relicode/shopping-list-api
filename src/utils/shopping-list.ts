@@ -50,9 +50,7 @@ export const listItemFactory = (params: ListItemFactoryParams): ListItem => {
   itemData[ITEM_PURCHASED] = params.hasOwnProperty(ITEM_PURCHASED) ? params[ITEM_PURCHASED] : false
   itemData[ITEM_QUANTITY] = params.hasOwnProperty(ITEM_QUANTITY) ? params[ITEM_QUANTITY] : 1
   itemData[ITEM_UNIT] = params.hasOwnProperty(ITEM_UNIT) ? params[ITEM_UNIT] : undefined
-
-  validateSchema(itemData, listItemSchema)
-  return itemData as ListItem
+  return validateSchema(itemData, listItemSchema) as ListItem
 }
 
 const shoppingListSchema = Joi.object().keys({
@@ -63,6 +61,5 @@ const shoppingListSchema = Joi.object().keys({
 export const shoppingListFactory = (params: ShoppingListFactoryParams): ShoppingList => {
   const listData = { listId: params.listId }
   listData[LIST_ITEMS] = params.hasOwnProperty(LIST_ITEMS) ? params[LIST_ITEMS] : []
-  validateSchema(listData, shoppingListSchema)
-  return params as ShoppingList
+  return validateSchema(listData, shoppingListSchema) as ShoppingList
 }
