@@ -7,3 +7,10 @@ functions:
           method: get
           path: shopping-list/{listId}
 
+  shopping-list-put:
+    handler: src/functions/shopping-list.put
+    events:
+      - http:
+          method: post
+          path: shopping-list/
+
